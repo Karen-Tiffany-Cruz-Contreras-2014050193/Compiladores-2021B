@@ -12,10 +12,10 @@
 
 void FuncionS(char cadena[]);
 void FuncionA(char cadena[]);
-void Consumir(char letra, char cadena[]);
+void Consumir(int veredicto, char cadena[]);
 
 int indice = 0;
-char cadena[] = "ababbaacccc";
+char cadena[] = "abcabbacccc";
 
 int main()
 {
@@ -40,9 +40,9 @@ void FuncionS(char cadena[])
 	if(cadena[indice]=='a')
     {
 		//Se consume a
-		Consumir('a',cadena);
+		Consumir(1,cadena);
 		//Se consume b, se manda a llamar a B y si no hay errores se llama a A
-		Consumir('b',cadena);
+		Consumir(1,cadena);
 		FuncionS(cadena);
 		FuncionA(cadena);
 	}
@@ -50,12 +50,12 @@ void FuncionS(char cadena[])
 	else if (cadena[indice]=='b')
 	{
 		//Se consume b y se manda a llamar a A 
-		Consumir('b',cadena);
+		Consumir(1,cadena);
 		FuncionA(cadena);
 	}
 	else
 	{
-		Consumir(' ',cadena);
+		Consumir(0,cadena);
 	}
 }
 
@@ -66,24 +66,24 @@ void FuncionA(char cadena[])
 	if(cadena[indice]=='a')
 	{
 		//Se consume a y se manda llamar a A
-		Consumir('a',cadena);
+		Consumir(1,cadena);
 		FuncionA(cadena);		
 	}
 	else if (cadena[indice]=='c')
 	{
 		//A -> c
-		Consumir('c',cadena);
+		Consumir(1,cadena);
 	}
 	else
 	{
-		Consumir(' ',cadena);
+		Consumir(0,cadena);
 	}	
 }
 
 //Consumir
-void Consumir(char letra, char cadena[])
+void Consumir(int veredicto, char cadena[])
 {
-	if(cadena[indice]==letra)
+	if(veredicto==1)
 	{
 		printf("Se consume -> %c\n",cadena[indice]);
 		indice++;

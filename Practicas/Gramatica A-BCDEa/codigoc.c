@@ -18,7 +18,7 @@ void FuncionB(char cadena[]);
 void FuncionC(char cadena[]);
 void FuncionD(char cadena[]);
 void FuncionE(char cadena[]);
-void Consumir(char letra, char cadena[]);
+void Consumir(int veredicto, char cadena[]);
 
 int indice = 0;
 char cadena[] = "bcafdeadfdea";
@@ -47,7 +47,7 @@ void FuncionA(char cadena[])
 	FuncionC(cadena);
 	FuncionD(cadena);
 	FuncionE(cadena);
-	Consumir('a',cadena);	
+	Consumir(1,cadena);	
 }
 
 //Funcion B
@@ -57,7 +57,7 @@ void FuncionB(char cadena[])
 	if(cadena[indice]=='b')
     {
 		//Se consume b
-		Consumir('b',cadena);
+		Consumir(1,cadena);
 		FuncionC(cadena);
 		FuncionD(cadena);
 	}
@@ -65,11 +65,11 @@ void FuncionB(char cadena[])
 	else if (cadena[indice]=='a')
 	{
 		//Se consume a
-		Consumir('a',cadena);
+		Consumir(1,cadena);
 	}
 	else
 	{
-		Consumir(' ',cadena);
+		Consumir(0,cadena);
 	}
 }
 
@@ -80,18 +80,18 @@ void FuncionC(char cadena[])
 	if(cadena[indice]=='c')
     {
 		//Se consume c
-		Consumir('c',cadena);
+		Consumir(1,cadena);
 		FuncionA(cadena);
 	}
 	//C->f
 	else if (cadena[indice]=='f')
 	{
 		//Se consume f
-		Consumir('f',cadena);
+		Consumir(1,cadena);
 	}
 	else
 	{
-		Consumir(' ',cadena);
+		Consumir(0,cadena);
 	}
 }
 
@@ -99,20 +99,20 @@ void FuncionC(char cadena[])
 void FuncionD(char cadena[])
 {
 	//D->d
-	Consumir('d',cadena);
+	Consumir(1,cadena);
 }
 
 //Funcion E
 void FuncionE(char cadena[])
 {
 	//E->e
-	Consumir('e',cadena);
+	Consumir(1,cadena);
 }
 
 //Consumir
-void Consumir(char letra, char cadena[])
+void Consumir(int veredicto, char cadena[])
 {
-	if(cadena[indice]==letra)
+	if(veredicto==1)
 	{
 		printf("Se consume -> %c\n",cadena[indice]);
 		indice++;
